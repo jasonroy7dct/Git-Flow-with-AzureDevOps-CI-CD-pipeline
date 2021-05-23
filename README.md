@@ -20,7 +20,7 @@ Two projects have different purpose and target environment:
 
 - The below image describes that the flow from GitLab to build pipeline and release pipeline
 
-![](https://imgur.com/gFmrN5O)
+![](https://i.imgur.com/gFmrN5O.png)
 
 - The continuous integration trigger can be set in build pipeline. However, if you have the condition of firewall issues, you may have to set the webHook or schedule the git pull/git push motion by yourself.
 
