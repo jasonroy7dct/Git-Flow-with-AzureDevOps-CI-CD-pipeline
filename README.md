@@ -2,4 +2,4 @@
 
 - Git Flow with Azure DevOps CI/CD pipeline
 
-- ![](https://i.imgur.com/6Xmp56B.png)
+![](https://i.imgur.com/6Xmp56B.png)
