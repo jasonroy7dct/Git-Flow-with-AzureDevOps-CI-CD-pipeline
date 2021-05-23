@@ -1,0 +1,43 @@
+# Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
+variables:
+- name: BuildParameters.mavenPOMFile
+  value: UTIL/pom.xml
+schedules:
+- cron: 0 12 * * 1,3
+  branches:
+    include:
+    - develop
+name: $(date:yyyyMMdd)$(rev:.r)
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: develop
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    vmImage: ubuntu-16.04
+  steps:
+  - checkout: self
+  - task: Maven@3
+    displayName: Maven UTIL/pom.xml
+    inputs:
+      mavenPOMFile: $(BuildParameters.mavenPOMFile)
+      goals: clean deploy -Dmaven.test.skip=true -PlocalDevOps=true
+      options: --settings UTIL/settings.xml
+      publishJUnitResults: false
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    condition: succeededOrFailed()
+    inputs:
+      SourceFolder: $(system.defaultworkingdirectory)
+      Contents: '**/*.jar'
+      TargetFolder: $(build.artifactstagingdirectory)
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: buildArtifacts'
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: $(Build.SourcesDirectory)
+      ArtifactName: buildArtifacts
+...

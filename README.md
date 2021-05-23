@@ -14,6 +14,21 @@ Two projects have different purpose and target environment:
 ### Demo
 
 - This demo section is for **Project A**
-- Git Flow with Azure DevOps CI/CD pipeline
+- The flow chart of Git Flow with Azure DevOps CI/CD pipeline
 
 ![](https://i.imgur.com/6Xmp56B.png)
+
+- The below image describes that the flow from GitLab to build pipeline and release pipeline
+
+[https://imgur.com/gFmrN5O](https://imgur.com/gFmrN5O)
+
+- The continuous integration trigger can be set in build pipeline. However, if you have the condition of firewall issues, you may have to set the webHook or schedule the git pull/git push motion by yourself.
+
+### Infrastructure as code
+
+- One of the concept of DevOps is IaC
+
+[https://docs.microsoft.com/zh-tw/dotnet/architecture/cloud-native/infrastructure-as-code](https://docs.microsoft.com/zh-tw/dotnet/architecture/cloud-native/infrastructure-as-code)
+
+- With IaC, you automate platform provisioning. You essentially apply software engineering practices such as testing and versioning to your DevOps practices
+- You can use some scripts such as YAML or even in Azure DevOps you can use Classic Editor and then turn the sequence to YAML, JSON, etc.
